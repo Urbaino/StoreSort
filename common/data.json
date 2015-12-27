@@ -1,0 +1,85 @@
+{
+	"Stores": [
+		{
+			"id" : 1,
+			"name" : "Ica Kvantum",
+			"departments" : [
+				1,2,3
+			]
+		},
+		{
+			"id" : 2,
+			"name" : "Coop Konsum",
+			"departments" : [
+				1,3
+			]
+		},
+		{
+			"id" : 3,
+			"name" : "City Gross",
+			"departments" : [
+				3,2,1
+			]
+		},
+		{
+			"id" : 4,
+			"name" : "Willys",
+			"departments" : [
+				3,2
+			]
+		},
+		{
+			"id" : 5,
+			"name" : "Lidl",
+			"departments" : [
+				3
+			]
+		}
+	],
+	"Departments": [
+		{
+			"id" : 1,
+			"name" : "Mejeri"
+		},
+		{
+			"id" : 2,
+			"name" : "Chark"
+		},
+		{
+			"id" : 3,
+			"name" : "Bröd"
+		}
+	],
+	"Wares": [
+		{
+			"id" : 1,
+			"name" : "Mjölk",
+			"department" : 1
+		},
+		{
+			"id" : 2,
+			"name" : "Yoghurt",
+			"department" : 1
+		},
+		{
+			"id" : 3,
+			"name" : "Keso",
+			"department" : 1
+		},
+		{
+			"id" : 4,
+			"name" : "Bacon",
+			"department" : 2
+		},
+		{
+			"id" : 5,
+			"name" : "Falukorv",
+			"department" : 2
+		},
+		{
+			"id" : 6,
+			"name" : "Lingongrova",
+			"department" : 3
+		}
+	]
+}

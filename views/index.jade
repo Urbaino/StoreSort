@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  div.page-header
+    h1= title
+  p Välj butik nedan för att skapa en inköpslista.
+  each store in data
+    a(href='/list/#{store.id}')
+      div.col-sm-4.col-md-3
+        div.panel.panel-default
+          div.panel-heading
+            h3= store.name
+          div.panel-body
+            each department in store.departments
+              p.list-group-item-text= department.name

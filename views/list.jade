@@ -1,0 +1,70 @@
+extends layout
+
+block content
+  div.page-header
+    h1= Store.name
+  div.col-sm-2
+    h4 Avdelningar
+    u1.list-group-item
+      each department in Store.departments
+        li
+          span= department.name
+
+  div.col-sm-4
+    h4 Lista
+    u1(id="basket").list-group-item
+
+  div.col-sm-6
+    h4 Varor
+    u1.list-group
+      each ware in Wares
+        li.list-group-item
+          =ware.name
+          button(id="add_"+ware.id, onclick="onClick(#{ware.id})").ware_right Add
+
+  script(type='text/javascript').
+    var store = !{JSON.stringify(Store)};
+    var wares = !{JSON.stringify(Wares)};
+    var list = [];
+
+    var onClick = function(id) {
+      for(var i=0; i<list.length; ++i){
+        if(list[i].id === id){
+          list[i].value += 1;
+          UpdateListRender();
+          return;
+        }
+      }
+
+      var newRow = {};
+      newRow.id = id;
+      newRow.value = 1;
+      for (var i=0; i<wares.length; ++i){
+        if (wares[i].id === id){
+          newRow.name = wares[i].name;
+          for (var j=0; j<store.departments.length; ++j){
+            if(store.departments[j].id == wares[i].department){
+              newRow.sortOrder = j;
+              break;
+            }
+          }
+          break;
+        }
+      }
+      list.push(newRow);
+      UpdateListRender();
+    }
+
+    var UpdateListRender = function()
+    {
+      list.sort(function(a,b){return a.sortOrder - b.sortOrder;});
+      var basket = document.getElementById('basket');
+      while (basket.firstChild){
+        basket.removeChild(basket.firstChild);
+      }
+      for (var i=0; i<list.length; ++i){
+          var newRow = document.createElement('li');
+          newRow.innerHTML = "<span>" + list[i].name + "</span><span id='num_" + list[i].id + "' class='ware_right'>"+ list[i].value +"</span>";
+          basket.appendChild(newRow);
+      }
+    }

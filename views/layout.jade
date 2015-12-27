@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title= title
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/bootstrap-theme.min.css')
+    link(rel='stylesheet', href='/css/theme.css')
+  body(role="document")
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      div.container
+          div.navbar-header
+            a(href='/').navbar-brand StoreSort
+          div(id="navbar").navbar-collapse.collapse
+            ul.navbar-nav.nav
+              li
+                a Hej
+              li
+                a San
+    div.container
+      block content
+    script(src='/js/jquery.min.js')
+    script(src='/js/bootstrap.min.js')
