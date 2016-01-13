@@ -1,7 +1,6 @@
 logs
 *.log
 npm-debug.log*
-bin
 node_modules
 public/css/**
 public/fonts/**
