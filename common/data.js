@@ -4,6 +4,8 @@ var stores = {};
 var departments = {};
 var wares = {};
 
+var admins = {};
+
 var readData = function() {
 	var data = fs.readFileSync('./common/data.json');
 	dataset = JSON.parse(data);
@@ -14,6 +16,14 @@ var readData = function() {
 	console.log('Stuff loaded');
 };
 
+var readUsers = function() {
+	var data = fs.readFileSync('./common/users.json');
+	dataset = JSON.parse(data);
+	admins = dataset["Admins"];
+
+	console.log("Admins loaded");
+}
+
 var findItem = function(list, id){
   for (var i = 0; i < list.length; i++) {
     if(list[i].id == id){
@@ -22,6 +32,13 @@ var findItem = function(list, id){
   }
 }
 
+// Users
+exports.getAdmin = function(id){
+	readUsers();
+	return findItem(admins, id);
+}
+
+// Stores
 exports.getStore = function(id){
 	readData();
 	var store = findItem(stores, id);
@@ -30,15 +47,6 @@ exports.getStore = function(id){
 	}
 	return store;
 }
-exports.getDepartment = function(id){
-	readData();
-	return findItem(departments, id);
-}
-exports.getWare = function(id){
-	readData();
-	return findItem(wares, id);
-}
-
 exports.getStores = function(){
 	readData();
 	for (var i = 0; i < stores.length; i++) {
@@ -48,9 +56,21 @@ exports.getStores = function(){
 	}
 	return stores;
 }
+
+// Departments
+exports.getDepartment = function(id){
+	readData();
+	return findItem(departments, id);
+}
 exports.getDepartments = function(){
 	readData();
 	return departments;
+}
+
+// Wares
+exports.getWare = function(id){
+	readData();
+	return findItem(wares, id);
 }
 exports.getWares = function(){
 	readData();

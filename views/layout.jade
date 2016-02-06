@@ -13,10 +13,22 @@ html
             a(href='/').navbar-brand StoreSort
           div(id="navbar").navbar-collapse.collapse
             ul.navbar-nav.nav
-              li
-                a Hej
-              li
-                a San
+              if user
+                li
+                  a My Lists
+                if user.isAdmin
+                  li
+                    a Management
+            ul.navbar-nav.nav.navbar-right
+              if user
+                li
+                  span.navbar-brand= user.displayName
+                  img(src="#{user.photos[0].value}")
+                li
+                  a(href='/logout') Log out
+              else
+                li
+                  a(href='/auth/google') Log in with Google
     div.container
       block content
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')

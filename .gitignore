@@ -2,8 +2,6 @@ logs
 *.log
 npm-debug.log*
 node_modules
-public/css/**
-public/fonts/**
-public/images/**
-public/js/**
-!public/css/theme.css
+public/favicon.ico
+common/secrets.js
+JSON_TEMP

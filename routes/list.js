@@ -7,7 +7,8 @@ router.get('/:id', function(req, res, next) {
   var store = data.getStore(req.params.id);
   res.render('list',{
     'Store' : store,
-    'Wares' : data.getWaresByDepts(store.departments)
+    'Wares' : data.getWaresByDepts(store.departments),
+    user : req.user
   })
 });
 

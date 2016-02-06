@@ -5,9 +5,12 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  if (req.user)
+    console.log(req.user.photos[0].value);
   res.render('index', {
-    'title' : 'List of stores',
-    'data' : data.getStores()
+    title : 'List of stores',
+    data : data.getStores(),
+    user : req.user
   });
 });
 
